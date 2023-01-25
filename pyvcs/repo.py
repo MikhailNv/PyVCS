@@ -68,25 +68,25 @@ def repo_create(workdir: tp.Union[str, pathlib.Path]) -> pathlib.Path:
         p = pathlib.Path(workdir)
         if not os.path.exists(p / env):
             os.mkdir(p/env)
-        if not os.path.exists(pathlib.Path(p/env/"refs")):
+        elif not os.path.exists(pathlib.Path(p/env/"refs")):
             os.makedirs(p/env/"refs")
-        if not os.path.exists(pathlib.Path(p/env/"refs/tags")):
+        elif not os.path.exists(pathlib.Path(p/env/"refs/tags")):
             os.mkdir(p/env/"refs"/"tags")
-        if not os.path.exists(pathlib.Path(p/env/"refs/heads")):
+        elif not os.path.exists(pathlib.Path(p/env/"refs/heads")):
             os.makedirs(p/env/"refs"/"heads")
-        if not os.path.exists(pathlib.Path(p/env/"objects")):
+        elif not os.path.exists(pathlib.Path(p/env/"objects")):
             os.mkdir(p/env/"objects")         
-        if not os.path.exists(pathlib.Path(p/env/"HEAD")):
+        elif not os.path.exists(pathlib.Path(p/env/"HEAD")):
             pathlib.Path(p/env/"HEAD").touch()
             file = open(pathlib.Path(p/env/"HEAD"), "w")
             file.write("ref: refs/heads/master\n")
             file.close()
-        if not os.path.exists(pathlib.Path(p/env/"config")):
+        elif not os.path.exists(pathlib.Path(p/env/"config")):
             pathlib.Path(p/env/"config").touch()
             file = open(pathlib.Path(p/env/"config"), "w")
             file.write("[core]\n\trepositoryformatversion = 0\n\tfilemode = true\n\tbare = false\n\tlogallrefupdates = false\n")
             file.close()
-        if not os.path.exists(pathlib.Path(p/env/"description")):
+        elif not os.path.exists(pathlib.Path(p/env/"description")):
             pathlib.Path(p/env/"description").touch()
             file = open(pathlib.Path(p/env/"description"), "w")
             file.write("Unnamed pyvcs repository.\n")
